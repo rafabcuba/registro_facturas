@@ -1,0 +1,41 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title %}- Inicio{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('echarts/echarts.min.js') }}"></script>
+    <script src="{{ asset('echarts/rose.echarts.js') }}"></script>
+{% endblock %}
+
+{% block article %}
+
+<style>
+  #main,
+  html,
+  body {
+    width: 100%;
+  }
+  #main {
+    height: 400px;
+  }
+</style>
+
+<div class="js-rosechart"
+    data-resumen="{{ resumen|serialize(format = 'json') }}">
+</div>
+
+<div class="container-fluid">
+    
+    <div class="card">
+      <div class="card-header">
+        Resumen de Estado
+      </div>
+      <div class="card-body">
+        <div id="main"></div>  
+      </div>
+    </div>
+    
+</div>
+
+
+{% endblock %}

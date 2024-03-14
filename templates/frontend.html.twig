@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('fontawesome/css/svg-with-js.min.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('fontawesome/js/all.min.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <!-- Barra de navegación -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path('home')}}">
+                <img src="{{ asset('images/RaXpA_logo.png') }}" width="auto" height="30" alt="RBMCert">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{ path('home')}}"> <i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+                </li>
+                {# <li class="nav-item">
+                <a class="nav-link" href="#">Enlace</a>
+                </li> #}
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-file-lines" aria-hidden="true"></i> Reportes
+                </a>
+                <ul class="dropdown-menu">
+                    {# <li><a class="dropdown-item" href="#"><i class="fas fa-globe" aria-hidden="true"></i> Sitios monitoriados</a></li> #}
+                    <li><a class="dropdown-item" href="#"><i class="fa fa-history" aria-hidden="true"></i> Registro de facturas</a></li>
+                    {# <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#"><i class="far fa-eye" aria-hidden="true"></i> Estado actual</a></li> #}
+                </ul>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-shield-halved"></i> Seguridad
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ path('change_password')}}"><i class="fa fa-key" aria-hidden="true"></i> Cambiar Contraseña</a></li>
+                </ul>
+                </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin')}}"><i class="fa fa-cog" aria-hidden="true"></i> Administración</a>
+                    </li>
+                {%endif%}
+            </ul>
+
+            {# <form class="d-flex mr-2" role="search" method="get" action="{{ path('buscar') }}">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="cadena" name="cadena">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form> #}
+
+            <!-- Right links -->
+            <ul class="navbar-nav ms-auto d-flex align-items-center">
+                <li class="nav-item mx-2 mx-lg-1">
+                <a class="nav-link" href="{{ path('app_logout')}}"><i class="fa fa-sign-out"></i> Salir</a>
+                </li>
+                <li class="nav-item mx-2 mx-lg-1">
+                <span class="navbar-text">
+                    <i class="fa-regular fa-user"></i> {{app.user.fullname}}
+                </span>
+                </li>
+            </ul>
+            <!-- Right links -->
+            
+            </div>
+        </div>
+    </nav>
+    <!-- Fin de Barra de navegación -->
+
+    {% block article %}{% endblock %}
+
+{% endblock %}
+

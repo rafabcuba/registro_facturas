@@ -1,0 +1,65 @@
+<p>
+    <strong>Resumen de estado de certificados SSL</strong>
+</p>
+
+<ul>
+    <li><strong>Cantidad de Sitios Monitoriados: </strong>{{resumen[0].tot}}</li>
+    <li><strong>Certificados activos: </strong>{{resumen[0].ok}}</li>
+    <li><strong>Certificados expirados: </strong>{{resumen[0].expired}}</li>
+    <li><strong>Certificados próximos a expirar: </strong>{{resumen[0].warning}}</li>
+</ul>
+
+<h4>Listado detallado</h4>
+<div>
+    <table style="border-style: solid; border-width: 1px; border-color: #CCC">
+        <thead>
+            <tr>
+                <th>Sitio</th>
+                <th>Unidad Organizativa</th>
+                <th>Fecha de chequeo</th>
+                <th>URL</th>
+                <th>Sujeto</th>
+                <th>Fecha de Expiración</th>
+                <th>Validez (dias)</th>
+            </tr>
+        </thead>
+        {% for check in lastcheck %}
+        {% set stylerow = "" %}
+        {% if check.diff <= 0 %}
+            {% set stylerow = "background-color:#ffcccc" %}
+        {% elseif check.diff <= 10 %}
+            {% set stylerow = "background-color:#ffffcc" %}
+        {% endif %}
+        <tr style="{{ stylerow }}">
+            <td>{{ check.description }}</td>
+            <td>{{ check.ou }}</td>
+            <td>{{check.date|date("d/m/Y H:i")}}</td>
+            <td>
+                <a href="https://{{ check.name }}">
+                    {{ check.name }}
+                </a>
+            </td>
+            <td>{{check.subject}}</td>
+            <td>{{check.enddate|date("d/m/Y H:i")}}</td>
+            <td>{{check.diff}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+<p>
+    Este es un reporte generado automáticamente, para más información consultar el siguiente enlace:
+    <a href="{{base_url}}">{{base_url}}</a>
+    (en la sección de Reportes se encuentran los partes correspondientes)
+</p>
+
+
+<p>
+---<br>
+<a href="{{base_url}}">
+    <img src="{{ email.image('@img/RBMCert.png') }}" alt="RBMCert" width="200" height="auto">
+</a><br>
+Desoft<br>
+</p>

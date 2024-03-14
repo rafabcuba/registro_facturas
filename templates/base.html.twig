@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {# <meta name="viewport" content="width=device-width, initial-scale=1"> #}
+        
+        <!-- Chrome, Firefox OS and Opera -->
+        <meta name="theme-color" content="#333333">
+        <!-- Windows Phone -->
+        <meta name="msapplication-navbutton-color" content="#333333">
+        <!-- iOS Safari -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="#333333">
+
+        <title>RBMCert {% block title %}{% endblock %}</title>
+
+        <link rel="icon" sizes="32x32" href="{{ asset('images/favicon.ico') }}" />
+
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+        {% include 'footer.html.twig' %}
+ 
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

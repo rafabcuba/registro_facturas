@@ -1,0 +1,17 @@
+{% extends 'base.login.html.twig' %}
+
+{% block chjs %}<script src="{{ asset('js/change_backgroundpp.js') }}"></script>{% endblock %}
+
+{% block title %}Correo de reinicio enviado{% endblock %}
+
+{% block body %}
+    <div class="bg-dark p-5 rounded-lg m-3 text-white">
+        <div class="container">
+            <h1 class="display-4">Correo de reinicio enviado</h1>
+            <p class="lead">Si su correo electrónico está registrado en el sistema se ha enviado una notificación que contiene un enlace el 
+                cual puede ser utilizado para reiniciar su contraseña. Ese enlace expirará en 
+                {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+            <p class="lead">Si usted no recibe un correo electrónico revise su carpeta de "correo no deseado" o <a href="{{ path('app_forgot_password_request') }}">intente nuevamente</a> reiniciar su contraseña.</p>                
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" content="#333333">
+        <meta name="msapplication-navbutton-color" content="#333333">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#333333">
+        
+        <title>RBMCert {% block title %}{% endblock %}</title>
+        <link rel="icon" sizes="32x32" href="{{ asset('images/favicon.ico') }}" />
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('fontawesome/css/svg-with-js.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/login.css') }}" rel="stylesheet" type="text/css" />
+        
+        {% block chjs %}{% endblock %}
+    </head>
+
+    <body>
+        {% block body %}{% endblock %}
+
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('fontawesome/js/all.min.js') }}"></script>
+        <script type="text/javascript">
+            ChangeIt();
+        </script>
+    </body>
+</html>

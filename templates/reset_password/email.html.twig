@@ -1,0 +1,16 @@
+<h1>Hola!</h1>
+
+<p>Usted ha recibido esta notificación pues ha solicitado reiniciar su contraseña en el sistema RBMCert, si no ha sido así
+puede descartar este correo</p>
+
+<p>Para reiniciar su contraseña, favor visite el siguiente enlace:</p>
+
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+
+<p>Este enlace expirará en {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+<p>Saludos:</p>
+
+<p>RBMCert</p>
+
+<img src="{{ email.image('@img/RBMCert.png') }}" alt="RBMCert" width="200" height="auto">

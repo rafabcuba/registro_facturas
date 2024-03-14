@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <!-- Barra de navegación -->
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark ">
+        
+        <a class="navbar-brand" href="#">
+            <img src="{{ asset('images/raspberry-pi.svg') }}" width="30" height="30" class="d-inline-block align-top">
+            PISCA
+        </a>
+        
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"     aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <div class="navbar-nav mr-auto text-center">
+            <a class="nav-item nav-link" href="#">Inicio</a>
+            <a class="nav-item nav-link" href="#">Trazas</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reportes</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Empleados</a>
+                    <a class="dropdown-item" href="#">Departamentos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Estadística</a>
+                </div>
+            </li>
+            {# {% if is_granted('ROLE_ADMIN') %}
+                <a class="nav-item nav-link" href="#">Administración</a>
+            {%endif%} #}
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ayuda</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Ayuda</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Acerca de...</a>
+                </div>
+            </li>
+            
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarTogglerDemo01">
+            <ul class="navbar-nav ml-auto">
+                <form class="form-inline my-2 my-lg-0" role="search" method="get" action="#">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" id="cadena" name="cadena">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ok</button>
+                </form>
+                {# <span class="navbar-text ml-2">
+                    <i class="fa fa-user" aria-hidden="true"></i> {{ app.user.username }}
+                </span> #}
+                {# <a class="nav-item nav-link" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-sign-out-alt"></i> Salir</a> #}
+            </ul>
+            </div>
+        
+    </nav>
+    <!-- Fin de Barra de navegación -->
+
+    {% block article %}{% endblock %}
+
+{% endblock %}
+
